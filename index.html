@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sarthak Jain – DebugCat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --paper:#eef2f7;--card:#ffffff;--ink:#14213d;--muted:#4b5a75;--line:#cbd5e3;--eye:#f2c230;--eye-ink:#14213d;--chip:#dde5f0;--link:#1d4ed8;
+  --font:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0e1627;--card:#16223a;--ink:#eaf0fa;--muted:#9fb0cc;--line:#2a3a58;--eye:#f2c230;--eye-ink:#0e1627;--chip:#22304d;--link:#8fb4ff;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0e1627;--card:#16223a;--ink:#eaf0fa;--muted:#9fb0cc;--line:#2a3a58;--eye:#f2c230;--eye-ink:#0e1627;--chip:#22304d;--link:#8fb4ff;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.6}
+a{color:var(--link)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--eye);outline-offset:3px}
+.wrap{max-width:980px;margin:0 auto;padding:0 22px}
+nav{display:flex;gap:22px;justify-content:flex-end;padding:22px 0;font-weight:600;font-size:15px}
+nav a{color:var(--ink);text-decoration:none}
+nav a:hover{text-decoration:underline;text-decoration-thickness:3px;text-decoration-color:var(--eye);text-underline-offset:5px}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:32px;align-items:center;padding:34px 0 70px}
+h1{font-size:clamp(46px,9vw,92px);line-height:.95;letter-spacing:-.035em;margin:0 0 20px;font-weight:800}
+.lede{font-size:clamp(18px,2.4vw,22px);max-width:34ch;margin:0 0 24px;color:var(--muted)}
+.lede b{color:var(--ink);font-weight:600}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 20px;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid var(--ink);color:var(--ink)}
+.btn.main{background:var(--eye);border-color:var(--eye);color:#14213d}
+.btn:hover{transform:translateY(-2px)}
+.eyes{width:100%;max-width:360px;justify-self:center;touch-action:none}
+.eyes svg{width:100%;height:auto;display:block}
+.face{fill:var(--card);stroke:var(--ink);stroke-width:4}
+.iris{fill:var(--eye)}
+.pupil{fill:var(--eye-ink)}
+.ear{fill:var(--ink)}
+.nose{fill:var(--ink)}
+h2{font-size:clamp(28px,5vw,40px);letter-spacing:-.02em;margin:0 0 8px;line-height:1.1}
+section{padding:54px 0;border-top:2px solid var(--line)}
+.sub{color:var(--muted);margin:0 0 30px;max-width:56ch}
+.proj{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:28px;margin-bottom:22px}
+.proj.lead{border-color:var(--ink)}
+.proj h3{font-size:26px;margin:0 0 4px;letter-spacing:-.015em}
+.proj .tag{color:var(--muted);margin:0 0 14px;font-size:15px}
+.proj p{margin:0 0 14px;max-width:68ch}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:16px 0;padding:0;list-style:none;font-size:14px;font-weight:600}
+.flow li{background:var(--chip);padding:5px 11px;border-radius:8px}
+.flow li+li::before{content:"›";margin-right:8px;color:var(--muted)}
+.flow li{display:flex}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0 0 16px;list-style:none}
+.chips li{background:var(--chip);padding:4px 11px;border-radius:999px;font-size:14px;font-weight:600}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.grid2 .proj{margin:0}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+.skills h3{margin:0 0 10px;font-size:18px}
+.skills ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.skills li{background:var(--chip);padding:4px 12px;border-radius:999px;font-size:15px;font-weight:600}
+.now{background:var(--eye);color:#14213d;border-radius:18px;padding:26px 28px}
+.now h3{margin:0 0 6px;font-size:22px}
+.now p{margin:0}
+footer{padding:44px 0 60px;border-top:2px solid var(--line);color:var(--muted);font-size:15px}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:10px}.eyes{max-width:240px;order:-1;justify-self:start}.grid2{grid-template-columns:1fr}nav{justify-content:flex-start;gap:16px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav aria-label="Sections"><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#hackathons">Hackathons</a><a href="#stack">Stack</a><a href="#now">Learning</a><a href="#contact">Contact</a></nav>
+
+<header class="hero">
+  <div>
+    <h1>Sarthak Jain</h1>
+    <p class="lede">Final-year CSE student (AI and ML Honours) building <b>AI agents</b>, <b>RAG systems</b> and automation that solve real problems. Two internships, three hackathon wins and 300+ LeetCode problems solved. Also known as DebugCat.</p>
+    <div class="btns">
+      <a class="btn main" href="#projects">See my projects</a>
+      <a class="btn" href="https://github.com/debugcat-hub" target="_blank" rel="noopener">GitHub profile</a>
+    </div>
+  </div>
+  <div class="eyes" id="eyes" aria-hidden="true">
+    <svg viewBox="0 0 360 300">
+      <polygon class="ear" points="40,110 60,20 130,70"/>
+      <polygon class="ear" points="320,110 300,20 230,70"/>
+      <ellipse class="face" cx="180" cy="170" rx="150" ry="115"/>
+      <g id="eyeL"><circle class="face" cx="120" cy="155" r="44" style="stroke-width:3"/><circle class="iris" cx="120" cy="155" r="30"/><circle class="pupil" cx="120" cy="155" r="14"/></g>
+      <g id="eyeR"><circle class="face" cx="240" cy="155" r="44" style="stroke-width:3"/><circle class="iris" cx="240" cy="155" r="30"/><circle class="pupil" cx="240" cy="155" r="14"/></g>
+      <polygon class="nose" points="168,215 192,215 180,230"/>
+    </svg>
+  </div>
+</header>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <p class="sub">The three things I’d point you to first, then two open-source projects I forked to learn from.</p>
+
+  <article class="proj lead">
+    <h3>SpeakSeek 2.0</h3>
+    <p class="tag">Video analysis RAG chatbot</p>
+    <p>Finds out who is speaking in a video, transcribes what each person said, lines everything up on one timeline, and lets you chat with the video. Ask a question about the conversation, or ask it to clip any moment on demand.</p>
+    <ul class="flow" aria-label="Pipeline">
+      <li>Face tracking</li><li>Active speaker detection</li><li>Per-person transcription</li><li>Master timeline JSON</li><li>Chat and clip UI</li>
+    </ul>
+    <p>Chat mode answers from the timestamped transcript. Clip mode calls an ffmpeg tool to cut the requested segment and plays it inline. An automated FFMPEG and yt-dlp pipeline replaced manual video segmenting, cutting multi-week logging workflows down to a few hours.</p>
+    <ul class="chips"><li>Python</li><li>TalkNet-ASD</li><li>InsightFace</li><li>faster-whisper</li><li>Groq · LLaMA 3.3 70B</li><li>Gradio</li><li>Google Colab (T4)</li></ul>
+    <a href="https://github.com/debugcat-hub/SpeakSeek2.0" target="_blank" rel="noopener">View on GitHub</a>
+  </article>
+
+  <article class="proj">
+    <h3>Local Research Agent</h3>
+    <p class="tag">Runs on your own machine</p>
+    <p>A research agent that runs on your own machine. It does multi-step web retrieval and dynamic scraping, digs through Reddit, and synthesizes a detailed product analysis that is saved locally. Pydantic schemas keep tool calls and outputs structured, and LangChain astream gives live token streaming with step-by-step reasoning. You prompt it from a plain notepad window with Ctrl+Enter, no heavy UI.</p>
+    <p>The repo includes real runs, such as a mouse comparison and keyboard research. Next on the roadmap: a FAISS store for larger context and a LangGraph version of the workflow.</p>
+    <ul class="chips"><li>Python</li><li>LangChain</li><li>Pydantic</li><li>LM Studio</li><li>ReAct agent</li><li>DuckDuckGo</li></ul>
+    <a href="https://github.com/debugcat-hub/Local-Research-Agent" target="_blank" rel="noopener">View on GitHub</a>
+  </article>
+
+  <article class="proj">
+    <h3>Cybersecurity Audit using GraphRAG</h3>
+    <p class="tag">Fully offline</p>
+    <p>Turns structured audit inputs into a formal security audit report. It ingests a zipped audit, builds a knowledge graph, retrieves with local embeddings, and writes the report in Markdown, with optional PDF export through Pandoc. Nothing leaves the machine.</p>
+    <ul class="flow" aria-label="Pipeline"><li>Ingest zip</li><li>Embeddings</li><li>Knowledge graph</li><li>Report</li></ul>
+    <ul class="chips"><li>Python</li><li>GraphRAG</li><li>NetworkX</li><li>pandas</li><li>LM Studio</li><li>Pandoc</li></ul>
+    <a href="https://github.com/debugcat-hub/Cybersecurity-audit-Using-GraphRAG-" target="_blank" rel="noopener">View on GitHub</a>
+  </article>
+
+  <h3 style="margin:40px 0 14px;font-size:22px">Forked to learn from</h3>
+  <div class="grid2">
+    <article class="proj">
+      <h3 style="font-size:21px">pet-assistant</h3>
+      <p class="tag">C# · forked from cmarathe1</p>
+      <p>An open-source desktop AI assistant blueprint with a custom agent UI and UX. I use it to explore how a desktop assistant is put together.</p>
+      <a href="https://github.com/debugcat-hub/pet-assistant" target="_blank" rel="noopener">View on GitHub</a>
+    </article>
+    <article class="proj">
+      <h3 style="font-size:21px">meme-generator</h3>
+      <p class="tag">Python · forked from catmeowdebug</p>
+      <p>A Python meme generator I forked to study and customize.</p>
+      <a href="https://github.com/debugcat-hub/meme-generator" target="_blank" rel="noopener">View on GitHub</a>
+    </article>
+  </div>
+</section>
+
+<section id="experience">
+  <h2>Experience and education</h2>
+  <p class="sub">Two internships in AI and data work, alongside my degree.</p>
+  <article class="proj">
+    <h3>RBG.AI</h3>
+    <p class="tag">Intern, Coimbatore. Jun to Jul 2025</p>
+    <p>Fine-tuned a domain-specific large language model for an endangered language. I curated and preprocessed the dataset, analysed BLEU scores, and adapted open-source architectures and training pipelines to low-resource language constraints.</p>
+  </article>
+  <article class="proj">
+    <h3>Nexoris</h3>
+    <p class="tag">Intern, Coimbatore. Dec 2025 to Jan 2026</p>
+    <p>Designed and implemented the database schema to store, structure and retrieve low-resource tabular data efficiently.</p>
+  </article>
+  <article class="proj">
+    <h3>Sri Ramakrishna Engineering College</h3>
+    <p class="tag">B.E. Computer Science Engineering, 2023 to 2027</p>
+    <p>Pursuing the AI and ML Honours track.</p>
+  </article>
+</section>
+
+<section id="hackathons">
+  <h2>Hackathons</h2>
+  <p class="sub">Three wins so far, one of them with a special prize.</p>
+  <article class="proj lead">
+    <h3>MediScribe AI</h3>
+    <p class="tag">Special prize winner, college hackathon</p>
+    <p>An offline-first clinical system. Doctor-patient dialogue is transcribed in real time through NLP pipelines, and zero-cloud NFC cryptographic key derivation retrieves emergency medical records. In the crash-site simulation, responders tap to pull a victim’s basic patient information immediately, so critical details are in hand before the ambulance even leaves.</p>
+    <ul class="chips"><li>NFC</li><li>Host Card Emulation</li><li>NLP</li><li>Offline-first</li><li>Healthcare</li></ul>
+  </article>
+</section>
+
+<section id="stack">
+  <h2>What I work with</h2>
+  <p class="sub">Interested in AI, machine learning, deep learning, computer vision, backend development and automation.</p>
+  <div class="skills">
+    <div><h3>Languages</h3><ul><li>Python</li><li>Java</li><li>JavaScript</li><li>SQL</li></ul></div>
+    <div><h3>Frameworks and libraries</h3><ul><li>FastAPI</li><li>PyTorch</li><li>LangChain</li><li>OpenCV</li><li>NumPy</li><li>Pandas</li><li>Tkinter</li></ul></div>
+    <div><h3>Gen AI and data</h3><ul><li>RAG</li><li>LoRA</li><li>LM Studio</li><li>Neo4j</li><li>FAISS</li><li>NetworkX</li><li>Pydantic</li></ul></div>
+    <div><h3>Tools</h3><ul><li>Docker</li><li>Android Studio</li><li>ffmpeg</li><li>Gradio</li><li>Google Colab</li></ul></div>
+  </div>
+</section>
+
+<section id="problem-solving">
+  <h2>Problem solving</h2>
+  <p class="sub">300+ LeetCode problems solved, with clean, well-structured solutions.</p>
+</section>
+
+<section id="now">
+  <div class="now">
+    <h3>Learning right now</h3>
+    <p>FastAPI, PyTorch and the Model Context Protocol (MCP), with the goal of building end-to-end AI applications.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Let’s talk</h2>
+  <p class="sub">Based in Bengaluru. Most of my work is on GitHub, so take a look, or send me a message about internships, projects or collaborations.</p>
+  <div class="btns">
+    <a class="btn main" href="mailto:jainsarthak583@gmail.com">jainsarthak583@gmail.com</a>
+    <a class="btn" href="https://www.linkedin.com/in/sarthak-jain666/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn" href="https://github.com/debugcat-hub" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</section>
+
+<footer>“Every bug is just another opportunity to learn something new.”</footer>
+</div>
+
+<script>
+(function(){
+  var box=document.getElementById('eyes');
+  var eyes=[document.getElementById('eyeL'),document.getElementById('eyeR')];
+  var base=[[120,155],[240,155]];
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function look(x,y){
+    var svg=box.querySelector('svg'),r=svg.getBoundingClientRect();
+    eyes.forEach(function(g,i){
+      var cx=r.left+base[i][0]/360*r.width,cy=r.top+base[i][1]/300*r.height;
+      var dx=x-cx,dy=y-cy,d=Math.sqrt(dx*dx+dy*dy)||1,m=Math.min(14,d/12);
+      var ox=dx/d*m,oy=dy/d*m;
+      var parts=g.querySelectorAll('.iris,.pupil');
+      for(var k=0;k<parts.length;k++){parts[k].setAttribute('transform','translate('+ox.toFixed(1)+' '+oy.toFixed(1)+')');}
+    });
+  }
+  if(!reduce){
+    window.addEventListener('pointermove',function(e){look(e.clientX,e.clientY);},{passive:true});
+  }
+})();
+</script>
+</body>
+</html>
